@@ -1,0 +1,17 @@
+server:
+  port: 8181
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: USER-MSSC
+          uri: lb://USER-MSSC
+          predicates:
+            - Path=/users/**
+        - id: DEPARTMENT-MSSC
+          uri: lb://DEPARTMENT-MSSC
+          predicates:
+            - Path=/departments/**
